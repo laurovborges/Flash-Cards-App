@@ -6,22 +6,27 @@ import {useState} from 'react'
 function RegisterPage() {
   const navigate = useNavigate()
   const [errorMsg, setErrorMsg] = useState('')
+  const [buttonText, setButtonText] = useState('Register')
 
   async function register(formData) {
     const username = formData.get("username")
     const password = formData.get("password")
+    setButtonText('Please wait...')
 
-    try {
-      const response = await axios.post('https://flash-cards-app-backend.onrender.com/api/v1/auth/register', {username, password})
-      
-      localStorage.setItem('accessToken', response.data.token)
-      localStorage.setItem('username', response.data.username)
-      navigate('/dashboard')
-
-    } catch (error) {
-      console.log(error)
-      setErrorMsg((error.response ? error.response.data.msg : null) || error.message)
-    }
+    setTimeout(async () => {
+      try {
+        const response = await axios.post('https://flash-cards-app-backend.onrender.com/api/v1/auth/register', {username, password})
+        
+        localStorage.setItem('accessToken', response.data.token)
+        localStorage.setItem('username', response.data.username)
+        navigate('/dashboard')
+  
+      } catch (error) {
+        console.log(error)
+        setErrorMsg((error.response ? error.response.data.msg : null) || error.message)
+        setButtonText('Register')
+      }
+    }, 0)
   }
 
   return (
@@ -35,7 +40,7 @@ function RegisterPage() {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" />
         </div>
-        <button>Register</button>
+        <button>{buttonText}</button>
       </form>
       <br />
       <Link to="/login">Already registered? Login</Link>
