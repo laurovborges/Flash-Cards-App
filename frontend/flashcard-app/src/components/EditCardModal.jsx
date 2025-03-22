@@ -9,7 +9,7 @@ function EditCardModal(props) {
         const accessToken = localStorage.getItem('accessToken')
 
         try {
-            const response = await axios.patch(`http://localhost:3000/api/v1/decks/${props.deckID}/cards/${props.cardID}`, {front: frontText, back: backText}, {
+            const response = await axios.patch(`https://flash-cards-app-backend.onrender.com/api/v1/decks/${props.deckID}/cards/${props.cardID}`, {front: frontText, back: backText}, {
               headers: {
                 Authorization: `Bearer ${accessToken}`
               }

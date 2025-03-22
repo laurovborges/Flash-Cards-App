@@ -12,7 +12,7 @@ function LoginPage() {
     const password = formData.get("password")
     
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/auth/login', {username, password})
+      const response = await axios.post('https://flash-cards-app-backend.onrender.com/api/v1/auth/login', {username, password})
 
       // save token to localStorage
       localStorage.setItem('accessToken', response.data.token)
@@ -32,7 +32,7 @@ function LoginPage() {
       const accessToken = localStorage.getItem('accessToken')
       if(accessToken){
         try {
-          await axios.get('http://localhost:3000/api/v1/decks', {
+          await axios.get('https://flash-cards-app-backend.onrender.com/api/v1/decks', {
             headers: {
               Authorization: `Bearer ${accessToken}`
             }

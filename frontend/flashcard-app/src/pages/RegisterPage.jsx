@@ -12,7 +12,7 @@ function RegisterPage() {
     const password = formData.get("password")
 
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/auth/register', {username, password})
+      const response = await axios.post('https://flash-cards-app-backend.onrender.com/api/v1/auth/register', {username, password})
       
       localStorage.setItem('accessToken', response.data.token)
       localStorage.setItem('username', response.data.username)

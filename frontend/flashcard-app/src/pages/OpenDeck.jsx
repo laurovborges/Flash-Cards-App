@@ -16,7 +16,7 @@ function OpenDeck() {
   const getDeckName = async () => {
     try {
       const accessToken = localStorage.getItem('accessToken')
-      const response = await axios.get(`http://localhost:3000/api/v1/decks/${deckID}`,{
+      const response = await axios.get(`https://flash-cards-app-backend.onrender.com/api/v1/decks/${deckID}`,{
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
@@ -31,7 +31,7 @@ function OpenDeck() {
     try {
       setIsLoading(true)
       const accessToken = localStorage.getItem('accessToken')
-      const response = await axios.get(`http://localhost:3000/api/v1/decks/${deckID}/cards`, {
+      const response = await axios.get(`https://flash-cards-app-backend.onrender.com/api/v1/decks/${deckID}/cards`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }

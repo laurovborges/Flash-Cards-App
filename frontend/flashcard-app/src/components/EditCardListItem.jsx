@@ -8,7 +8,7 @@ function EditCardListItem(props) {
   async function deleteCard() {
     const accessToken = localStorage.getItem('accessToken')
     try {
-      const response = await axios.delete(`http://localhost:3000/api/v1/decks/${props.deckID}/cards/${props.cardID}`, {
+      const response = await axios.delete(`https://flash-cards-app-backend.onrender.com/api/v1/decks/${props.deckID}/cards/${props.cardID}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }

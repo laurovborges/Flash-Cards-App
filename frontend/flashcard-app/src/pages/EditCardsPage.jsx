@@ -14,7 +14,7 @@ function EditCardsPage() {
     const getDeckName = async () => {
         try {
             const accessToken = localStorage.getItem('accessToken')
-            const response = await axios.get(`http://localhost:3000/api/v1/decks/${deckID}`, {
+            const response = await axios.get(`https://flash-cards-app-backend.onrender.com/api/v1/decks/${deckID}`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
@@ -32,7 +32,7 @@ function EditCardsPage() {
         setAddCardBtnText('Adding card...')
 
         try {
-            const response = await axios.post(`http://localhost:3000/api/v1/decks/${deckID}/cards`, { front, back }, {
+            const response = await axios.post(`https://flash-cards-app-backend.onrender.com/api/v1/decks/${deckID}/cards`, { front, back }, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
@@ -51,7 +51,7 @@ function EditCardsPage() {
         try {
             setIsLoading(true)
             const accessToken = localStorage.getItem('accessToken')
-            const response = await axios.get(`http://localhost:3000/api/v1/decks/${deckID}/cards`, {
+            const response = await axios.get(`https://flash-cards-app-backend.onrender.com/api/v1/decks/${deckID}/cards`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }

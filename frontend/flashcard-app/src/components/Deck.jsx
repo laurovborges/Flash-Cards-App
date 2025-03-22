@@ -18,7 +18,7 @@ function Deck(props) {
   async function deleteDeck() {
     const accessToken = localStorage.getItem('accessToken')
     try {
-      const response = await axios.delete(`http://localhost:3000/api/v1/decks/${props.deckID}`, {
+      const response = await axios.delete(`https://flash-cards-app-backend.onrender.com/api/v1/decks/${props.deckID}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }

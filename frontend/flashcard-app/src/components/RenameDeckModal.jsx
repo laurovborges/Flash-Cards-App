@@ -8,7 +8,7 @@ function RenameDeckModal(props) {
         const newDeckName = formData.get("deck-name")
 
         try {
-            const response = await axios.patch(`http://localhost:3000/api/v1/decks/${props.deckID}`, {name: newDeckName}, {
+            const response = await axios.patch(`https://flash-cards-app-backend.onrender.com/api/v1/decks/${props.deckID}`, {name: newDeckName}, {
               headers: {
                 Authorization: `Bearer ${accessToken}`
               }

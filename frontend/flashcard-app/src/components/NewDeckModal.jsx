@@ -17,7 +17,7 @@ function NewDeckModal() {
         setCreateDeckBtnText('Creating deck...')
 
         try {
-            const response = await axios.post(`http://localhost:3000/api/v1/decks/`, {name: deckName}, {
+            const response = await axios.post(`https://flash-cards-app-backend.onrender.com/api/v1/decks/`, {name: deckName}, {
               headers: {
                 Authorization: `Bearer ${accessToken}`
               }

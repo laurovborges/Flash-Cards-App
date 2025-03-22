@@ -13,7 +13,7 @@ function Dashboard() {
   const fetchDecks = async () => {
     try {
       const accessToken = localStorage.getItem('accessToken')
-      const response = await axios.get('http://localhost:3000/api/v1/decks', {
+      const response = await axios.get('https://flash-cards-app-backend.onrender.com/api/v1/decks', {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
