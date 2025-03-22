@@ -702,6 +702,7 @@ footer {
   height: 30px;
   display: flex;
   align-items:center;
+  justify-content: space-between;
   color: var(--secondary-text-color);
   font-size: 0.8rem;
   position: absolute;

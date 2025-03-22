@@ -2,6 +2,7 @@ import React from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import {useState} from 'react'
+import Footer from '../components/Footer'
 
 function RegisterPage() {
   const navigate = useNavigate()
@@ -33,6 +34,7 @@ function RegisterPage() {
   }
 
   return (
+    <>
     <section className="login-section">
       <h1>Register</h1>
       <p className="auth-error-text">{errorMsg ? errorMsg : null}</p>
@@ -48,6 +50,8 @@ function RegisterPage() {
       <br />
       <Link to="/login">Already registered? Login</Link>
     </section>
+    <Footer />
+    </>
   )
 }
 

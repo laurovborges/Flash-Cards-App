@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import {useState} from 'react'
+import Footer from '../components/Footer'
 
 function LoginPage() {
   const navigate = useNavigate()
@@ -62,6 +63,7 @@ function LoginPage() {
   }, [])
 
   return (
+    <>
     <section className="login-section">
       <h1>Login</h1>
       <p className="auth-error-text">{errorMsg ? errorMsg : null}</p>
@@ -77,6 +79,8 @@ function LoginPage() {
       <br />
       <Link to="/register">Register</Link>
     </section>
+    <Footer />
+    </>
   )
 }
 
