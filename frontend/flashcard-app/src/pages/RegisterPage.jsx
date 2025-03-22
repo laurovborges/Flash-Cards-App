@@ -7,11 +7,13 @@ function RegisterPage() {
   const navigate = useNavigate()
   const [errorMsg, setErrorMsg] = useState('')
   const [buttonText, setButtonText] = useState('Register')
+  const [buttonClass, setButtonClass] = useState('')
 
   async function register(formData) {
     const username = formData.get("username")
     const password = formData.get("password")
     setButtonText('Please wait...')
+    setButtonClass('login-button-pressed')
 
     setTimeout(async () => {
       try {
@@ -25,6 +27,7 @@ function RegisterPage() {
         console.log(error)
         setErrorMsg((error.response ? error.response.data.msg : null) || error.message)
         setButtonText('Register')
+        setButtonClass('')
       }
     }, 0)
   }
@@ -36,11 +39,11 @@ function RegisterPage() {
       <form action={register}>
         <div className="username-password-inputs">
           <label htmlFor="username">Username</label>
-          <input type="text" name="username" id="username" />
+          <input type="text" name="username" id="username" required={true}/>
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" />
+          <input type="password" name="password" id="password" required={true} />
         </div>
-        <button>{buttonText}</button>
+        <button className={buttonClass}>{buttonText}</button>
       </form>
       <br />
       <Link to="/login">Already registered? Login</Link>

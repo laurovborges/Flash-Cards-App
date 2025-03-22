@@ -7,11 +7,13 @@ function LoginPage() {
   const navigate = useNavigate()
   const [errorMsg, setErrorMsg] = useState('')
   const [buttonText, setButtonText] = useState('Login')
+  const [buttonClass, setButtonClass] = useState('')
 
   async function login(formData) {
     const username = formData.get("username")
     const password = formData.get("password")
     setButtonText('Please wait...')
+    setButtonClass('login-button-pressed')
     
     // The setTimeout forces a rerender after setButtonText before executing API call. This fixes the problem where setButtonText's changes are only reflected in the DOM at the end of the try catch block due to React's state update batching
     setTimeout(async () => { 
@@ -29,6 +31,7 @@ function LoginPage() {
         console.log(error)
         setErrorMsg((error.response ? error.response.data.msg : null) || error.message)
         setButtonText('Login')
+        setButtonClass('')
       }
     }, 0)
 
@@ -65,11 +68,11 @@ function LoginPage() {
       <form action={login}>
         <div className="username-password-inputs">
           <label htmlFor="username">Username</label>
-          <input type="text" name="username" id="username" />
+          <input type="text" name="username" id="username" required={true} />
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" />
+          <input type="password" name="password" id="password" required={true} />
         </div>
-        <button>{buttonText}</button>
+        <button className={buttonClass}>{buttonText}</button>
       </form>
       <br />
       <Link to="/register">Register</Link>
